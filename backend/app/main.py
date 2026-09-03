@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.core.config import settings
-from app.api import health
+from app.api import health, projects, skills
 from app.core.database import engine, Base
 from app.models import *  # Import all models  
 
@@ -17,6 +17,16 @@ app.include_router(
     health.router,
     prefix = settings.API_V1_STR,
     tags = ["Health"]
+)
+app.include_router(
+    projects.router,
+    prefix = settings.API_V1_STR,
+    tags = ["Projects"]
+)
+app.include_router(
+    skills.router,
+    prefix = settings.API_V1_STR,
+    tags = ["Skills"]
 )
  
 
