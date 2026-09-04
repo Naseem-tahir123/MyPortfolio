@@ -1,10 +1,17 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center text-white">
-      <h1 className="text-4xl font-bold text-blue-400">
-        AI Engineer Portfolio Frontend is Live! 🚀
-      </h1>
-    </div>
+    <Router>
+      {/* Navbar will be added here */}
+      <div className="min-h-screen">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+      {/* Footer will be added here */}
+    </Router>
   )
 }
 

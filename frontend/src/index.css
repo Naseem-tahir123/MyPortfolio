@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/* Tailwind v4 mein custom colors yahan define hote hain */
+@theme {
+    --color-primary: #10b981;
+    --color-dark: #0f172a;
+    --color-card: #1e293b;
+}
+
+@layer base {
+    body {
+        @apply bg-dark text-gray-200 antialiased;
+    }
+}
