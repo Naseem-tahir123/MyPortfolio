@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 // In future we will import Skills and Projects components here
 import Skills from '../components/Skills';
+import Projects from '../components/Projects';
 
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
         <main>
             <Hero />
             <Skills />
-            {/* <Projects /> */}
+            <Projects />
         </main>
     );
 };
