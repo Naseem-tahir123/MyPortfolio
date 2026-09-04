@@ -18,4 +18,13 @@ export const getProjects = async () => {
     return response.data;
 };
 
+// Function to ask question to AI Assistant
+export const askAI = async (question, history = []) => {
+    const response = await api.post('/chat', {
+        question,
+        history
+    });
+    return response.data;
+}
+
 export default api;

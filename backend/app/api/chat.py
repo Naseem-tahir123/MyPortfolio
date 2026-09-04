@@ -7,7 +7,7 @@ from app.schemas.chat import ChatRequest, ChatResponse
 
 router = APIRouter()
 
-@router.post("chat/", response_model = ChatResponse)
+@router.post("/chat", response_model = ChatResponse)
 def ask_ai(payload: ChatRequest):
     if not settings.GROQ_API_KEY:
         raise HTTPException(
@@ -35,7 +35,7 @@ def ask_ai(payload: ChatRequest):
         chat_completion = client.chat.completions.create(
             messages=messages,
             model="openai/gpt-oss-20b",
-            temperature=0.2, # Use low temperatur for factual answers
+            temperature=0.2, # Use low temperature for factual answers
             max_tokens = 300
         )
 
