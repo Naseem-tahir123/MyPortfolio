@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     # The database URL will be provided through the .env file later
     # For now, we are using a default value
     DATABASE_URL: str = "postgresql+psycopg://user:password@localhost/dbname"
+    GROQ_API_KEY: str = ""
 
     class Config:
         env_file = ".env"

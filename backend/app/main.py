@@ -1,6 +1,7 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
-from app.api import health, projects, skills
+from app.api import health, projects, skills, chat
 from app.core.database import engine, Base
 from app.models import *  # Import all models  
 
@@ -10,6 +11,15 @@ app = FastAPI(
     version = settings.VERSION,
     openapi_url = f"{settings.API_V1_STR}/openapi.json"
 
+)
+
+# Add CORS middleware to the application
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = ["http://127.0.0.1:3000"],
+    allow_credentials = True,
+    allow_methods = ["*"],
+    allow_headers = ["*"],
 )
 
 # Include the routes in the FastAPI application
@@ -27,6 +37,12 @@ app.include_router(
     skills.router,
     prefix = settings.API_V1_STR,
     tags = ["Skills"]
+)
+app.include_router(
+    chat.router,
+    prefix = settings.API_V1_STR,
+    tags = ["AI Assistant"]
+    
 )
  
 
