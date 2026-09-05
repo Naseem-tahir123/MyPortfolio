@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getProjects } from '../services/api';
+import VideoModal from './VideoModel';
 import { FolderGit2, ExternalLink, PlayCircle, Loader } from 'lucide-react';
 import { FiGithub } from 'react-icons/fi';
 
+
 const Projects = () => {
+    const [selectedVideo, setSelectedVideo] = useState(null);
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -85,10 +88,14 @@ const Projects = () => {
                                             <FiGithub size={18} /> Code
                                         </a>
                                     )}
+
                                     {project.demo_video_url && (
-                                        <a href={project.demo_video_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary flex items-center gap-2 text-sm font-medium transition-colors">
+                                        <button
+                                            onClick={() => setSelectedVideo({ url: project.demo_video_url, title: project.title })}
+                                            className="text-gray-400 hover:text-primary flex items-center gap-2 text-sm font-medium transition-colors"
+                                        >
                                             <PlayCircle size={18} /> Watch Demo
-                                        </a>
+                                        </button>
                                     )}
                                     {project.live_url && (
                                         <a href={project.live_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-emerald-400 flex items-center gap-2 text-sm font-medium transition-colors">
@@ -100,6 +107,13 @@ const Projects = () => {
                         ))}
                     </div>
                 )}
+                {/* Global Video Modal */}
+                <VideoModal
+                    isOpen={!!selectedVideo}
+                    onClose={() => setSelectedVideo(null)}
+                    videoUrl={selectedVideo?.url}
+                    title={selectedVideo?.title}
+                />
 
             </div>
         </section>
