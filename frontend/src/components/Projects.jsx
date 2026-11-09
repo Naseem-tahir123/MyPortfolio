@@ -27,13 +27,16 @@ const Projects = () => {
     }, []);
 
     return (
-        <section id="projects" className="py-20 px-6 bg-dark">
+        <section id="projects" className="scroll-mt-16 bg-dark px-5 py-16 sm:px-6 md:py-20">
             <div className="max-w-6xl mx-auto">
 
                 {/* Section Header */}
-                <div className="flex items-center gap-3 mb-12">
-                    <FolderGit2 className="text-primary" size={32} />
-                    <h2 className="text-3xl md:text-4xl font-bold text-white">Featured Case Studies</h2>
+                <div className="mb-9 flex items-center gap-3 md:mb-10">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/20 bg-primary/10"><FolderGit2 className="text-primary" size={20} /></div>
+                    <div>
+                        <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">Selected work</p>
+                        <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl">Featured Case Studies</h2>
+                    </div>
                 </div>
 
                 {loading && <div className="flex justify-center text-primary"><Loader className="animate-spin" size={40} /></div>}
@@ -41,11 +44,11 @@ const Projects = () => {
 
                 {/* Projects Grid */}
                 {!loading && !error && (
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                         {projects.map((project) => (
                             <div
                                 key={project.id}
-                                className="bg-card border border-gray-800 rounded-2xl p-6 md:p-8 hover:border-primary/50 transition-colors duration-300 group flex flex-col h-full"
+                                className="group flex h-full flex-col rounded-2xl border border-white/[0.08] bg-card/70 p-6 transition-colors duration-300 hover:border-primary/40 md:p-7"
                             >
                                 {/* Project Title & Status */}
                                 <div className="flex justify-between items-start mb-4">
